@@ -1,2 +1,3 @@
-0 human
-1 no-human
+0 lamb
+1 lamb_poodle
+2 poodle

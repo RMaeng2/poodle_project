@@ -14,6 +14,12 @@ model = load_model('keras_model.h5', compile=False)
 # Load the labels
 class_names = open('labels.txt', 'r').readlines()
 
+st.markdown("""
+## 🐏🐩 양 & 푸들 분류기  
+이 모델은 **양, 양컷한 푸들, 일반 푸들**을 구분하는 이미지 분류기입니다.  
+아래에서 카메라로 사진을 찍거나 파일을 업로드하여 테스트해보세요! 📸📂
+""")
+
 # 선택 옵션: 카메라 입력 또는 파일 업로드
 input_method = st.radio("이미지 입력 방식 선택", ["카메라 사용", "파일 업로드"])
 
@@ -39,6 +45,9 @@ if img_file_buffer is not None:
     # Replace this with the path to your image
     # 원본 이미지 불러오기
     image = Image.open(img_file_buffer).convert('RGB')
+
+    # 업로드한 이미지 표시
+    st.image(image, caption="업로드한 이미지", use_column_width=True)
 
     #resize the image to a 224x224 with the same strategy as in TM2:
     #resizing the image to be at least 224x224 and then cropping from the center
